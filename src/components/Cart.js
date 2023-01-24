@@ -17,17 +17,19 @@ export default function Cart() {
   }
 
   const searchMovi = ()=>{
-    if(seachName===""){
-        return
-    }
-    else{
+    // data.filter((value)=>value.title.toLowerCase().includes(seachName.toLowerCase())).map((item)=>
+    const res = data.filter((value)=>value.title.toLowerCase().includes(seachName.toLowerCase()))
+    // if(seachName===""){
+    //     return
+    // }
+    // else{
         
-    const out = data.filter((item)=>{
-        return item.title===seachName;
-    })
+    // const out = data.filter((item)=>{
+    //     return item.title===seachName;
+    // })
 
-    setData(out)
-}
+    setData(res)
+
 
   }
   useEffect(()=>{
