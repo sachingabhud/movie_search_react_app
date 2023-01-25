@@ -84,6 +84,7 @@ img{
 .details{
   text-align: justify;
   padding: 16px 0px 16px 16px;
+  overflow: hidden;
   
 }
 
