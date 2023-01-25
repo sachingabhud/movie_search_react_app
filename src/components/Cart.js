@@ -57,8 +57,8 @@ export default function Cart() {
                         <img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt="poster"/>
                     </div>
                     <div className='details'>
-                    <h3>Title : {item.title}</h3>
-                    <h6>Release Data : {item.release_date}</h6>
+                    <h3>{item.title}</h3>
+                    <h6>Release Date : {item.release_date}</h6>
                     <h6>Rating : {item.vote_average}</h6>
                     <p>{item.overview}</p>
                     </div>
