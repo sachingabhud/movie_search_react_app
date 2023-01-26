@@ -6,30 +6,18 @@ export default function Cart() {
   const [totalPage,setTotalPage] = useState(0);
   const [data,setData] = useState([]);
 
-  let Api_data;
   const getData =async (pageNumber)=>{
     const url = `https://api.themoviedb.org/4/list/1?api_key=3068a0e2376185dd3c3fad8dff28cb55&page=${pageNumber}`
     const response = await fetch(url);
-     Api_data = await response.json();
+    const Api_data = await response.json();
     setData(Api_data.results)
     setTotalPage(Api_data.total_pages)
     
   }
 
   const searchMovi = ()=>{
-    // data.filter((value)=>value.title.toLowerCase().includes(seachName.toLowerCase())).map((item)=>
-    const res = data.filter((value)=>value.title.toLowerCase().includes(seachName.toLowerCase()))
-    // if(seachName===""){
-    //     return
-    // }
-    // else{
-        
-    // const out = data.filter((item)=>{
-    //     return item.title===seachName;
-    // })
-
-    setData(res)
-
+    const res = data.filter((value)=>value.title.toLowerCase().includes(seachName.toLowerCase()));
+    setData(res);
 
   }
   useEffect(()=>{
@@ -37,9 +25,11 @@ export default function Cart() {
   },[])
 
   const hanldeOnChange = (e)=>{
-    setSearchName(e.target.value)
+    if(e.target.value===""){
+      getData();
+    }
+    setSearchName(e.target.value);
   }
-
 
   return (
     <>
@@ -68,6 +58,7 @@ export default function Cart() {
         })
       }
     </div>
+
     <div className='page'>
       <BiLeftArrow onClick={async()=>{
         if(page>1){
@@ -82,7 +73,6 @@ export default function Cart() {
         {page}
         
       </div><BiRightArrow onClick={ async()=>{
-        console.log(Api_data)
         if(page<totalPage){
          await setPage(page+1)
          window.scrollTo({top:0,behavior:'smooth'})
@@ -91,7 +81,6 @@ export default function Cart() {
         
         }
        
-        
         }}/>
     </div>
     </>
